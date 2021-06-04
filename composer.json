@@ -1,0 +1,54 @@
+{
+    "name": "glasswalllab/wiise-connector",
+    "description": "Connection to Wiise (Microsoft Business Central)",
+    "keywords": [
+        "glasswalllab",
+        "wiise-connector"
+    ],
+    "homepage": "https://github.com/glasswalllab/wiise-connector",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Stephen Reid",
+            "email": "sreid@gwlab.com.au",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/support": "^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Glasswalllab\\WiiseConnector\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Glasswalllab\\WiiseConnector\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Glasswalllab\\WiiseConnector\\WiiseConnectorServiceProvider"
+            ],
+            "aliases": {
+                "WiiseConnector": "Glasswalllab\\WiiseConnector\\WiiseConnectorFacade"
+            }
+        }
+    }
+}
