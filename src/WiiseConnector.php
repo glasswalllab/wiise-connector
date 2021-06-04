@@ -4,5 +4,5 @@ namespace Glasswalllab\WiiseConnector;
 
 class WiiseConnector
 {
-    // Build your next great package.
+    // Build your next great package. And here
 }
