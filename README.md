@@ -4,7 +4,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/glasswalllab/wiise-connector.svg?style=flat-square)](https://packagist.org/packages/glasswalllab/wiise-connector)
 ![GitHub Actions](https://github.com/glasswalllab/wiise-connector/actions/workflows/main.yml/badge.svg)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+Provides a connection to Wiise (Microsoft Business Central) for Laravel applications.
 
 ## Installation
 
@@ -37,16 +37,3 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 ### Security
 
 If you discover any security related issues, please email sreid@gwlab.com.au instead of using the issue tracker.
-
-## Credits
-
--   [Stephen Reid](https://github.com/glasswalllab)
--   [All Contributors](../../contributors)
-
-## License
-
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
-## Laravel Package Boilerplate
-
-This package was generated using the [Laravel Package Boilerplate](https://laravelpackageboilerplate.com).
