@@ -13,5 +13,6 @@ return [
     'authoriseEndpoint' => env('WIISE_AUTHORISE_ENDPOINT', '/oauth2/authorize'),
     'tokenEndpoint'     => env('WIISE_TOKEN_ENDPOINT', '/oauth2/token'),
     'resource'          => env('WIISE_RESOURCE', 'https://api.businesscentral.dynamics.com'),
-    'test' => 'Hello Test',
+    'baseUrl'           =>env('WIISE_BASE_API_URL',''),
+    'companyName'       =>env('WIISE_COMPANY_NAME',''),
 ];
