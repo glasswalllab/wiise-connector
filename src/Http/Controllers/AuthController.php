@@ -16,7 +16,7 @@ class AuthController extends Controller
       'urlAuthorize'            => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.authoriseEndpoint')."?resource=".config('wiiseConnector.resource'),
       'urlAccessToken'          => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.tokenEndpoint')."?resource=".config('wiiseConnector.resource'),
       'urlResourceOwnerDetails' => '',
-      'scopes'                  => '',
+      'scopes'                  => 'API.ReadWrite.All',
     ]);
 
     $authUrl = $oauthClient->getAuthorizationUrl();
@@ -58,8 +58,11 @@ class AuthController extends Controller
         'urlAuthorize'            => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.authoriseEndpoint')."?resource=".config('wiiseConnector.resource'),
         'urlAccessToken'          => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.tokenEndpoint')."?resource=".config('wiiseConnector.resource'),
         'urlResourceOwnerDetails' => '',
-        'scopes'                  => '',
+        'scopes'                  => 'API.ReadWrite.All',
       ]);
+
+      dd($oauthClient);
+
 
       try {
         // Make the token request
