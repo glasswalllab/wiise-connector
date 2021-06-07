@@ -12,7 +12,15 @@ class WiiseConnector
         return($this->callwebservice('/Job_List?\$select=No,Description,Bill_to_Customer_No,Status,Person_Responsible,Search_Description,Project_Manager','GET','')->value);
     }
 
-    public function callwebservice($endpoint,$method,$body)
+    //create resource
+
+    //update resource
+
+    //get job task lines
+
+    //post job journal
+
+    private function callwebservice($endpoint,$method,$body)
     {
         $tokenCache = new TokenCache();
         $accessToken = $tokenCache->getAccessToken('wiise');
