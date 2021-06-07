@@ -7,13 +7,12 @@ class TokenCache {
 
   public function storeTokens($accessToken) {
    
-    $token = Token::firstOrNew(['provider' => config('wiiseConnector.provider')],
+    $token = Token::updateOrCreate(['provider' => config('wiiseConnector.provider')],
         [
             'accessToken' => $accessToken->getToken(),
             'refreshToken' => $accessToken->getRefreshToken(),
             'tokenExpires' => $accessToken->getExpires(),
         ]);
-
     $token->save();
   }
 
