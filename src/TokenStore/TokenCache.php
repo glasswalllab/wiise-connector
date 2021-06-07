@@ -57,6 +57,8 @@ class TokenCache {
           'refresh_token' => $token->refreshToken
         ]);
   
+        dd($newToken);
+        
         // Store the new values
         $this->updateTokens($newToken);
   
