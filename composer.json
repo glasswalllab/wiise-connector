@@ -3,7 +3,7 @@
     "description": "Connection to Wiise (Microsoft Business Central)",
     "keywords": [
         "glasswalllab",
-        "wiise-connector"
+        "wiise_connector"
     ],
     "homepage": "https://github.com/glasswalllab/wiise-connector",
     "license": "MIT",
@@ -45,10 +45,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Glasswalllab\\Wiise_connector\\WiiseConnectorServiceProvider"
+                "Glasswalllab\\wiise_connector\\WiiseConnectorServiceProvider"
             ],
             "aliases": {
-                "WiiseConnector": "Glasswalllab\\Wiise_connector\\WiiseConnectorFacade"
+                "WiiseConnector": "Glasswalllab\\wiise_connector\\WiiseConnectorFacade"
             }
         }
     }
