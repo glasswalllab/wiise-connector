@@ -20,7 +20,7 @@ class AuthController extends Controller
 
     $authUrl = $oauthClient->getAuthorizationUrl();
 
-dd(config('wiise.appId'));
+dd(config('wiise.test'));
 
     // Save client state so we can validate in callback
     session(['oauthState' => $oauthClient->getState()]);
