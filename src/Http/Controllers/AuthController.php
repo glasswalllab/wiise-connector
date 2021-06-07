@@ -10,12 +10,12 @@ class AuthController extends Controller
   {
     // Initialize the OAuth client
     $oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
-      'clientId'                => config('app.appId'),
-      'clientSecret'            => config('app.appSecret'),
-      'redirectUri'             => config('app.redirectUri'),
-      'urlAuthorize'            => config('app.authority')."/".config('app.tennantId')."/".config('app.authoriseEndpoint')."?resource=".config('app.resource'),
-      'urlAccessToken'          => config('app.authority')."/".config('app.tennantId')."/".config('app.tokenEndpoint')."?resource=".config('app.resource'),
-      'urlResourceOwnerDetails' => config('app.authority'),
+      'clientId'                => config('config.appId'),
+      'clientSecret'            => config('config.appSecret'),
+      'redirectUri'             => config('config.redirectUri'),
+      'urlAuthorize'            => config('config.authority')."/".config('config.tennantId')."/".config('config.authoriseEndpoint')."?resource=".config('config.resource'),
+      'urlAccessToken'          => config('config.authority')."/".config('config.tennantId')."/".config('config.tokenEndpoint')."?resource=".config('config.resource'),
+      'urlResourceOwnerDetails' => config('config.authority'),
     ]);
 
     $authUrl = $oauthClient->getAuthorizationUrl();
