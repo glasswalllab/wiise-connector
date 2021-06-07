@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Glasswalllab\WiiseConnector\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -52,13 +52,12 @@ class AuthController extends Controller
     if (isset($authCode)) {
       // Initialize the OAuth client
       $oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
-        'clientId'                => config('azure.appId'),
-        'clientSecret'            => config('azure.appSecret'),
-        'redirectUri'             => config('azure.redirectUri'),
-        'urlAuthorize'            => config('azure.authority').config('azure.authorizeEndpoint'),
-        'urlAccessToken'          => config('azure.authority').config('azure.tokenEndpoint'),
-        'urlResourceOwnerDetails' => '',
-        'scopes'                  => config('azure.scopes')
+        'clientId'                => config('app.appId'),
+        'clientSecret'            => config('app.appSecret'),
+        'redirectUri'             => config('app.redirectUri'),
+        'urlAuthorize'            => config('app.authority')."/".config('app.tennantId')"/".config('app.authoriseEndpoint')."?resource=".config('app.resource'),
+        'urlAccessToken'          => config('app.authority')."/".config('app.tennantId')"/".config('app.tokenEndpoint')."?resource=".config('app.resource'),
+        'urlResourceOwnerDetails' => config('app.authority'),
       ]);
 
       try {
