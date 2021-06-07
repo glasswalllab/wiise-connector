@@ -16,6 +16,6 @@ class WiiseConnectorFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'wiiseConnector';
+        return 'wiiseconnector';
     }
 }

@@ -1,9 +1,9 @@
 {
-    "name": "glasswalllab/wiise_connector",
+    "name": "glasswalllab/wiiseconnector",
     "description": "Connection to Wiise (Microsoft Business Central)",
     "keywords": [
         "glasswalllab",
-        "wiise_connector"
+        "wiiseconnector"
     ],
     "homepage": "https://github.com/glasswalllab/wiise-connector",
     "license": "MIT",
@@ -26,12 +26,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Glasswalllab\\Wiise_connector\\": "src"
+            "Glasswalllab\\Wiiseconnector\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Glasswalllab\\Wiise_connector\\Tests\\": "tests"
+            "Glasswalllab\\Wiiseconnector\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -45,10 +45,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Glasswalllab\\wiise_connector\\WiiseConnectorServiceProvider"
+                "Glasswalllab\\Wiiseconnector\\WiiseConnectorServiceProvider"
             ],
             "aliases": {
-                "WiiseConnector": "Glasswalllab\\wiise_connector\\WiiseConnectorFacade"
+                "WiiseConnector": "Glasswalllab\\wiiseconnector\\WiiseConnectorFacade"
             }
         }
     }
