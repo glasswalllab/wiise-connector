@@ -68,7 +68,7 @@ class TokenCache {
     }
   
     // Token is still valid, just return it
-    return $token;
+    return $token->accessToken;
   }
 
   public function updateTokens($accessToken) {
