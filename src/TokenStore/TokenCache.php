@@ -16,6 +16,7 @@ class TokenCache {
   }
 
   public function clearTokens($provider) {
+    dd($provider);
     $token = Token::firstWhere('provider',$provider);
     Token::destroy($token->id);
   }
