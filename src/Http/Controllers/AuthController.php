@@ -67,7 +67,7 @@ class AuthController extends Controller
         ]);
 
         $tokenCache = new TokenCache();
-        $tokenCache->storeTokens($accessToken, $user);
+        $tokenCache->storeTokens($accessToken);
 
         // TEMPORARY FOR TESTING!
         return redirect('/')
