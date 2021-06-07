@@ -13,8 +13,8 @@ class AuthController extends Controller
       'clientId'                => config('app.appId'),
       'clientSecret'            => config('app.appSecret'),
       'redirectUri'             => config('app.redirectUri'),
-      'urlAuthorize'            => config('app.authority')."/".config('app.tennantId')."/".config('app.authoriseEndpoint')."?resource=".config('app.resource'),
-      'urlAccessToken'          => config('app.authority')."/".config('app.tennantId')."/".config('app.tokenEndpoint')."?resource=".config('app.resource'),
+      'urlAuthorize'            => config('app.authority'),
+      'urlAccessToken'          => config('app.authority'),
       'urlResourceOwnerDetails' => config('app.authority'),
     ]);
 
