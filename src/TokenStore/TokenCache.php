@@ -52,6 +52,7 @@ class TokenCache {
         'urlResourceOwnerDetails' => '',
       ]);
   
+      dd($token->refreshToken);
       try {
         $newToken = $oauthClient->getAccessToken('refresh_token', [
           'refresh_token' => $token->refreshToken
