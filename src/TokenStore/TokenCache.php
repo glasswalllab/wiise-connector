@@ -23,6 +23,7 @@ class TokenCache {
   public function getAccessToken($provider) {
 
     $token = Token::firstWhere('provider',$provider);
+    dd($token);
     
     // Check if tokens exist
     if (empty($token)) {
