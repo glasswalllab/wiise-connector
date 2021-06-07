@@ -9,7 +9,7 @@ class WiiseConnector
 {
     public function getjobs()
     {  
-        $result = callwebservice('/Job_List?\$select=No,Description,Bill_to_Customer_No,Status,Person_Responsible,Search_Description,Project_Manager','GET','');
+        $result = $this->callwebservice('/Job_List?\$select=No,Description,Bill_to_Customer_No,Status,Person_Responsible,Search_Description,Project_Manager','GET','');
         return ($result);
     }
 
