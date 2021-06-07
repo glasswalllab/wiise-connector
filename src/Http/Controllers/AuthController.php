@@ -86,10 +86,10 @@ class AuthController extends Controller
       ->with('errorDetail', $request->query('error_description'));
   }
 
-  public function signout()
+  public function signout($provider)
   {
     $tokenCache = new TokenCache();
-    $tokenCache->clearTokens($tokenCache);
+    $tokenCache->clearTokens($provider);
     return redirect('/');
   }
 }

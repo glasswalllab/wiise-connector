@@ -15,10 +15,9 @@ class TokenCache {
     $token->save();
   }
 
-  public function clearTokens($accessToken) {
-
-    dd($accessToken);
-    Token::destroy($accessToken->id);
+  public function clearTokens($provider) {
+    $token = Token::firstWhere('provider',$provider);
+    Token::destroy($token->id);
   }
 
   public function getAccessToken($provider) {
