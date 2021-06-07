@@ -1,6 +1,6 @@
 <?php
 
-namespace Glasswalllab\Wiiseconnector\Http\Controllers;
+namespace glasswalllab\wiiseconnector\Http\Controllers;
 
 use Illuminate\Http\Request;
 
