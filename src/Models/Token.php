@@ -13,6 +13,6 @@ class Token extends Model
   protected $guarded = [];
   protected $table = 'api_tokens';
   protected $casts = [
-      'tokenExpires' => 'timestamp',
+      'tokenExpires' => 'datetime:Y-m-d',
   ];
 }

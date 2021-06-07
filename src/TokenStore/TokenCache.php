@@ -2,6 +2,7 @@
 
 namespace glasswalllab\wiiseconnector\TokenStore;
 use glasswalllab\wiiseconnector\Models\Token;
+use Carbon\Carbon;
 
 class TokenCache {
 
@@ -11,7 +12,7 @@ class TokenCache {
         [
             'accessToken' => $accessToken->getToken(),
             'refreshToken' => $accessToken->getRefreshToken(),
-            'tokenExpires' => $accessToken->getExpires(),
+            'tokenExpires' => Carbon::createFromTimestamp($accessToken->getExpires())->toDateTimeString(),
         ]);
     $token->save();
   }
