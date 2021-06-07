@@ -14,5 +14,5 @@ class Token extends Model
   protected $table = 'api_tokens';
   protected $casts = [
       'tokenExpires' => 'timestamp',
-  ]
+  ];
 }
