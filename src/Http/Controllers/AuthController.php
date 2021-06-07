@@ -61,9 +61,6 @@ class AuthController extends Controller
         'scopes'                  => 'API.ReadWrite.All',
       ]);
 
-      dd($oauthClient);
-
-
       try {
         // Make the token request
         $accessToken = $oauthClient->getAccessToken('authorization_code', [
