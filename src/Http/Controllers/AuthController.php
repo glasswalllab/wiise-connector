@@ -59,8 +59,6 @@ class AuthController extends Controller
         'urlResourceOwnerDetails' => config('wiiseConnector.authority'),
       ]);
 
-      dd($authCode);
-
       try {
         // Make the token request
         $accessToken = $oauthClient->getAccessToken('authorization_code', [
