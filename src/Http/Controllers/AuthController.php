@@ -2,6 +2,9 @@
 
 namespace glasswalllab\wiiseconnector\Http\Controllers;
 
+use Microsoft\Graph\Graph;
+use Microsoft\Graph\Model;
+
 use Illuminate\Http\Request;
 
 class AuthController extends Controller

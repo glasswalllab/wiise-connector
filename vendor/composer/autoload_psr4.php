@@ -7,7 +7,9 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'voku\\' => array($vendorDir . '/voku/portable-ascii/src/voku'),
-    'phpDocumentor\\Reflection\\' => array($vendorDir . '/phpdocumentor/reflection-common/src', $vendorDir . '/phpdocumentor/type-resolver/src', $vendorDir . '/phpdocumentor/reflection-docblock/src'),
+    'phpDocumentor\\Reflection\\' => array($vendorDir . '/phpdocumentor/reflection-common/src', $vendorDir . '/phpdocumentor/reflection-docblock/src', $vendorDir . '/phpdocumentor/type-resolver/src'),
+    'glasswalllab\\wiiseconnector\\Tests\\' => array($baseDir . '/tests'),
+    'glasswalllab\\wiiseconnector\\' => array($baseDir . '/src'),
     'ZBateson\\StreamDecorators\\' => array($vendorDir . '/zbateson/stream-decorators/src'),
     'ZBateson\\MbWrapper\\' => array($vendorDir . '/zbateson/mb-wrapper/src'),
     'ZBateson\\MailMimeParser\\' => array($vendorDir . '/zbateson/mail-mime-parser/src'),
@@ -59,6 +61,7 @@ return array(
     'Orchestra\\Testbench\\' => array($vendorDir . '/orchestra/testbench-core/src'),
     'Opis\\Closure\\' => array($vendorDir . '/opis/closure/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
+    'Microsoft\\Graph\\' => array($vendorDir . '/microsoft/microsoft-graph/src'),
     'League\\OAuth2\\Client\\' => array($vendorDir . '/league/oauth2-client/src'),
     'League\\MimeTypeDetection\\' => array($vendorDir . '/league/mime-type-detection/src'),
     'League\\Flysystem\\' => array($vendorDir . '/league/flysystem/src'),
@@ -69,8 +72,6 @@ return array(
     'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),
     'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
     'GrahamCampbell\\ResultType\\' => array($vendorDir . '/graham-campbell/result-type/src'),
-    'Glasswalllab\\WiiseConnector\\Tests\\' => array($baseDir . '/tests'),
-    'Glasswalllab\\WiiseConnector\\' => array($baseDir . '/src'),
     'Faker\\' => array($vendorDir . '/fakerphp/faker/src/Faker'),
     'Egulias\\EmailValidator\\' => array($vendorDir . '/egulias/email-validator/src'),
     'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),
@@ -81,4 +82,5 @@ return array(
     'Cron\\' => array($vendorDir . '/dragonmantank/cron-expression/src/Cron'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
     'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),
+    'Beta\\Microsoft\\Graph\\' => array($vendorDir . '/microsoft/microsoft-graph/src/Beta/Microsoft/Graph'),
 );
