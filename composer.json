@@ -1,9 +1,9 @@
 {
-    "name": "glasswalllab/wiise-connector",
+    "name": "glasswalllab/wiiseConnector",
     "description": "Connection to Wiise (Microsoft Business Central)",
     "keywords": [
         "glasswalllab",
-        "wiise-connector"
+        "wiiseConnector"
     ],
     "homepage": "https://github.com/glasswalllab/wiise-connector",
     "license": "MIT",

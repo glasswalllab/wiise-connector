@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use glasswalllab\wiise-connector\Http\Controllers\AuthController;
+use glasswalllab\wiiseConnector\Http\Controllers\AuthController;
 
-Route::get('/signin', 'AuthController@signin');
-Route::get('/callback', 'AuthController@callback');
+Route::get('/signin', [AuthController::class, 'signin']);
+Route::get('/callback', [AuthController::class, 'callback']);
