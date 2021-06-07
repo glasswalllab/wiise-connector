@@ -21,7 +21,7 @@ class WiiseConnectorServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('config.php'),
+                __DIR__.'/../config/config.php' => config_path('wiiseConnector.php'),
             ], 'config');
 
             // Publishing the views.
@@ -50,10 +50,10 @@ class WiiseConnectorServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'wiiseconnector');
+        $this->mergeConfigFrom(__DIR__.'/../config/wiise.php', 'wiiseConnector');
 
         // Register the main class to use with the facade
-        $this->app->singleton('wiiseconnector', function () {
+        $this->app->singleton('wiiseConnector', function () {
             return new WiiseConnector;
         });
     }

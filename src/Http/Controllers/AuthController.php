@@ -10,12 +10,12 @@ class AuthController extends Controller
   {
     // Initialize the OAuth client
     $oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
-      'clientId'                => config('wiise.appId'),
-      'clientSecret'            => config('config.appSecret'),
-      'redirectUri'             => config('config.redirectUri'),
-      'urlAuthorize'            => config('config.authority')."/".config('config.tennantId')."/".config('config.authoriseEndpoint')."?resource=".config('config.resource'),
-      'urlAccessToken'          => config('config.authority')."/".config('config.tennantId')."/".config('config.tokenEndpoint')."?resource=".config('config.resource'),
-      'urlResourceOwnerDetails' => config('config.authority'),
+      'clientId'                => wiise('wiise.appId'),
+      'clientSecret'            => wiise('wiise.appSecret'),
+      'redirectUri'             => wiise('wiise.redirectUri'),
+      'urlAuthorize'            => wiise('wiise.authority')."/".wiise('wiise.tennantId')."/".wiise('wiise.authoriseEndpoint')."?resource=".wiise('wiise.resource'),
+      'urlAccessToken'          => wiise('wiise.authority')."/".wiise('wiise.tennantId')."/".wiise('wiise.tokenEndpoint')."?resource=".wiise('wiise.resource'),
+      'urlResourceOwnerDetails' => wiise('wiise.authority'),
     ]);
 
     $authUrl = $oauthClient->getAuthorizationUrl();
@@ -53,12 +53,12 @@ dd(config('wiise.appId'));
     if (isset($authCode)) {
       // Initialize the OAuth client
       $oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
-        'clientId'                => config('config.appId'),
-        'clientSecret'            => config('config.appSecret'),
-        'redirectUri'             => config('config.redirectUri'),
-        'urlAuthorize'            => config('config.authority')."/".config('config.tennantId')."/".config('config.authoriseEndpoint')."?resource=".config('config.resource'),
-        'urlAccessToken'          => config('config.authority')."/".config('config.tennantId')."/".config('config.tokenEndpoint')."?resource=".config('config.resource'),
-        'urlResourceOwnerDetails' => config('config.authority'),
+        'clientId'                => wiise('wiise.appId'),
+        'clientSecret'            => wiise('wiise.appSecret'),
+        'redirectUri'             => wiise('wiise.redirectUri'),
+        'urlAuthorize'            => wiise('wiise.authority')."/".wiise('wiise.tennantId')."/".wiise('wiise.authoriseEndpoint')."?resource=".wiise('wiise.resource'),
+        'urlAccessToken'          => wiise('wiise.authority')."/".wiise('wiise.tennantId')."/".wiise('wiise.tokenEndpoint')."?resource=".wiise('wiise.resource'),
+        'urlResourceOwnerDetails' => wiise('wiise.authority'),
       ]);
 
       try {
