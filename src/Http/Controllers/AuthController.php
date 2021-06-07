@@ -16,7 +16,6 @@ class AuthController extends Controller
       'urlAuthorize'            => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.authoriseEndpoint')."?resource=".config('wiiseConnector.resource'),
       'urlAccessToken'          => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.tokenEndpoint')."?resource=".config('wiiseConnector.resource'),
       'urlResourceOwnerDetails' => '',
-      'scopes'                  => 'API.ReadWrite.All',
     ]);
 
     $authUrl = $oauthClient->getAuthorizationUrl();
@@ -58,7 +57,6 @@ class AuthController extends Controller
         'urlAuthorize'            => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.authoriseEndpoint')."?resource=".config('wiiseConnector.resource'),
         'urlAccessToken'          => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.tokenEndpoint')."?resource=".config('wiiseConnector.resource'),
         'urlResourceOwnerDetails' => '',
-        'scopes'                  => 'API.ReadWrite.All',
       ]);
 
       try {
@@ -66,11 +64,18 @@ class AuthController extends Controller
         $accessToken = $oauthClient->getAccessToken('authorization_code', [
           'code' => $authCode
         ]);
-
+      
+        $graph = new Graph();
+        $graph->setAccessToken($accessToken->getToken());
+      
+        $user = $graph->createRequest('GET', '/me?$select=displayName,mail,mailboxSettings,userPrincipalName')
+          ->setReturnType(Model\User::class)
+          ->execute();
+      
         // TEMPORARY FOR TESTING!
         return redirect('/')
           ->with('error', 'Access token received')
-          ->with('errorDetail', $accessToken->getToken());
+          ->with('errorDetail', 'User:'.$user->getDisplayName().', Token:'.$accessToken->getToken());
       }
       catch (League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
         return redirect('/')
