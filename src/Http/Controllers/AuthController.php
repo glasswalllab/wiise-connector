@@ -10,7 +10,7 @@ class AuthController extends Controller
   {
     // Initialize the OAuth client
     $oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
-      'clientId'                => config('config.appId'),
+      'clientId'                => config('wiise.appId'),
       'clientSecret'            => config('config.appSecret'),
       'redirectUri'             => config('config.redirectUri'),
       'urlAuthorize'            => config('config.authority')."/".config('config.tennantId')."/".config('config.authoriseEndpoint')."?resource=".config('config.resource'),
@@ -20,7 +20,7 @@ class AuthController extends Controller
 
     $authUrl = $oauthClient->getAuthorizationUrl();
 
-dd($authUrl);
+dd(config('wiise.appId'));
 
     // Save client state so we can validate in callback
     session(['oauthState' => $oauthClient->getState()]);
