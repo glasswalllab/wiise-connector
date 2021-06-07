@@ -65,10 +65,13 @@ class AuthController extends Controller
           'code' => $authCode
         ]);
 
+        $tokenCache = new TokenCache();
+        $tokenCache->storeTokens($accessToken, $user);
+
         // TEMPORARY FOR TESTING!
         return redirect('/')
           ->with('error', 'Access token received')
-          ->with('errorDetail', $accessToken->getToken());
+          ->with('errorDetail', $tokenCach->getAccessToken());
       }
       catch (League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
         return redirect('/')
