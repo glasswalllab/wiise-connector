@@ -2,6 +2,7 @@
 
 namespace Glasswalllab\WiiseConnector;
 
+use glasswalllab\wiiseconnector\TokenStore\TokenCache;
 use Illuminate\Http\Request;
 
 class WiiseConnector
