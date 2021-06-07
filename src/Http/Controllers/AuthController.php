@@ -10,17 +10,17 @@ class AuthController extends Controller
   {
     // Initialize the OAuth client
     $oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
-      'clientId'                => config('wiise.appId'),
-      'clientSecret'            => config('wiise.appSecret'),
-      'redirectUri'             => config('wiise.redirectUri'),
-      'urlAuthorize'            => config('wiise.authority')."/".config('wiise.tennantId')."/".config('wiise.authoriseEndpoint')."?resource=".config('wiise.resource'),
-      'urlAccessToken'          => config('wiise.authority')."/".config('wiise.tennantId')."/".config('wiise.tokenEndpoint')."?resource=".config('wiise.resource'),
-      'urlResourceOwnerDetails' => config('wiise.authority'),
+      'clientId'                => config('wiiseConnector.appId'),
+      'clientSecret'            => config('wiiseConnector.appSecret'),
+      'redirectUri'             => config('wiiseConnector.redirectUri'),
+      'urlAuthorize'            => config('wiiseConnector.authority')."/".config('wiiseConnector.tennantId')."/".config('wiiseConnector.authoriseEndpoint')."?resource=".config('wiiseConnector.resource'),
+      'urlAccessToken'          => config('wiiseConnector.authority')."/".config('wiiseConnector.tennantId')."/".config('wiiseConnector.tokenEndpoint')."?resource=".config('wiiseConnector.resource'),
+      'urlResourceOwnerDetails' => config('wiiseConnector.authority'),
     ]);
 
     $authUrl = $oauthClient->getAuthorizationUrl();
 
-dd(config('wiiseConnector.test'));
+dd($authUrl);
 
     // Save client state so we can validate in callback
     session(['oauthState' => $oauthClient->getState()]);
@@ -53,14 +53,13 @@ dd(config('wiiseConnector.test'));
     if (isset($authCode)) {
       // Initialize the OAuth client
       $oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
-        'clientId'                => config('wiise.appId'),
-        'clientSecret'            => config('wiise.appSecret'),
-        'redirectUri'             => config('wiise.redirectUri'),
-        'urlAuthorize'            => config('wiise.authority')."/".config('wiise.tennantId')."/".config('wiise.authoriseEndpoint')."?resource=".config('wiise.resource'),
-        'urlAccessToken'          => config('wiise.authority')."/".config('wiise.tennantId')."/".config('wiise.tokenEndpoint')."?resource=".config('wiise.resource'),
-        'urlResourceOwnerDetails' => config('wiise.authority'),
+        'clientId'                => config('wiiseConnector.appId'),
+        'clientSecret'            => config('wiiseConnector.appSecret'),
+        'redirectUri'             => config('wiiseConnector.redirectUri'),
+        'urlAuthorize'            => config('wiiseConnector.authority')."/".config('wiiseConnector.tennantId')."/".config('wiiseConnector.authoriseEndpoint')."?resource=".config('wiiseConnector.resource'),
+        'urlAccessToken'          => config('wiiseConnector.authority')."/".config('wiiseConnector.tennantId')."/".config('wiiseConnector.tokenEndpoint')."?resource=".config('wiiseConnector.resource'),
+        'urlResourceOwnerDetails' => config('wiiseConnector.authority'),
       ]);
-
       try {
         // Make the token request
         $accessToken = $oauthClient->getAccessToken('authorization_code', [
