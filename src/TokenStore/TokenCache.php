@@ -8,9 +8,10 @@ class TokenCache {
   public function storeTokens($accessToken) {
 
     $token = new Token;
+    $token->provider = 'wiise';
     $token->accessToken = $accessToken->getToken();
     $token->save();
-    
+
     session([
       'accessToken' => $accessToken->getToken(),
       'refreshToken' => $accessToken->getRefreshToken(),

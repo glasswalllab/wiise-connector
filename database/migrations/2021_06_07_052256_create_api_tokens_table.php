@@ -16,9 +16,9 @@ class CreateApiTokensTable extends Migration
         Schema::create('api_tokens', function (Blueprint $table) {
             $table->id();
             $table->string('provider', 255);
-            $table->string('accessToken', 255);
-            $table->string('refreshToken', 255);
-            $table->string('tokenExpires', 255);
+            $table->text('accessToken')->nullable();
+            $table->text('refreshToken')->nullable();
+            $table->string('tokenExpires')->nullable();
             $table->timestamps();
         });
     }
