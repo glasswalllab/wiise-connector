@@ -13,14 +13,12 @@ class AuthController extends Controller
       'clientId'                => config('wiiseConnector.appId'),
       'clientSecret'            => config('wiiseConnector.appSecret'),
       'redirectUri'             => config('wiiseConnector.redirectUri'),
-      'urlAuthorize'            => config('wiiseConnector.authority')."/".config('wiiseConnector.tennantId')."/".config('wiiseConnector.authoriseEndpoint')."?resource=".config('wiiseConnector.resource'),
-      'urlAccessToken'          => config('wiiseConnector.authority')."/".config('wiiseConnector.tennantId')."/".config('wiiseConnector.tokenEndpoint')."?resource=".config('wiiseConnector.resource'),
+      'urlAuthorize'            => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.authoriseEndpoint')."?resource=".config('wiiseConnector.resource'),
+      'urlAccessToken'          => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.tokenEndpoint')."?resource=".config('wiiseConnector.resource'),
       'urlResourceOwnerDetails' => config('wiiseConnector.authority'),
     ]);
 
     $authUrl = $oauthClient->getAuthorizationUrl();
-
-dd($authUrl);
 
     // Save client state so we can validate in callback
     session(['oauthState' => $oauthClient->getState()]);
@@ -56,8 +54,8 @@ dd($authUrl);
         'clientId'                => config('wiiseConnector.appId'),
         'clientSecret'            => config('wiiseConnector.appSecret'),
         'redirectUri'             => config('wiiseConnector.redirectUri'),
-        'urlAuthorize'            => config('wiiseConnector.authority')."/".config('wiiseConnector.tennantId')."/".config('wiiseConnector.authoriseEndpoint')."?resource=".config('wiiseConnector.resource'),
-        'urlAccessToken'          => config('wiiseConnector.authority')."/".config('wiiseConnector.tennantId')."/".config('wiiseConnector.tokenEndpoint')."?resource=".config('wiiseConnector.resource'),
+        'urlAuthorize'            => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.authoriseEndpoint')."?resource=".config('wiiseConnector.resource'),
+        'urlAccessToken'          => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.tokenEndpoint')."?resource=".config('wiiseConnector.resource'),
         'urlResourceOwnerDetails' => config('wiiseConnector.authority'),
       ]);
       try {
