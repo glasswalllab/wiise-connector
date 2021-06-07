@@ -1,5 +1,5 @@
 {
-    "name": "glasswalllab/wiise-connector",
+    "name": "glasswalllab/wiise_connector",
     "description": "Connection to Wiise (Microsoft Business Central)",
     "keywords": [
         "glasswalllab",
@@ -26,12 +26,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Glasswalllab\\WiiseConnector\\": "src"
+            "Glasswalllab\\Wiise_connector\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Glasswalllab\\WiiseConnector\\Tests\\": "tests"
+            "Glasswalllab\\Wiise_connector\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -45,10 +45,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Glasswalllab\\WiiseConnector\\WiiseConnectorServiceProvider"
+                "Glasswalllab\\Wiise_connector\\WiiseConnectorServiceProvider"
             ],
             "aliases": {
-                "WiiseConnector": "Glasswalllab\\WiiseConnector\\WiiseConnectorFacade"
+                "WiiseConnector": "Glasswalllab\\Wiise_connector\\WiiseConnectorFacade"
             }
         }
     }
