@@ -2,9 +2,6 @@
 
 namespace glasswalllab\wiiseconnector\Http\Controllers;
 
-use Microsoft\Graph\Graph;
-use Microsoft\Graph\Model;
-
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -67,18 +64,11 @@ class AuthController extends Controller
         $accessToken = $oauthClient->getAccessToken('authorization_code', [
           'code' => $authCode
         ]);
-      
-        $graph = new Graph();
-        $graph->setAccessToken($accessToken->getToken());
-      
-        $user = $graph->createRequest('GET', '/me?$select=displayName,mail,mailboxSettings,userPrincipalName')
-          ->setReturnType(Model\User::class)
-          ->execute();
-      
+
         // TEMPORARY FOR TESTING!
         return redirect('/')
           ->with('error', 'Access token received')
-          ->with('errorDetail', 'User:'.$user->getDisplayName().', Token:'.$accessToken->getToken());
+          ->with('errorDetail', $accessToken->getToken());
       }
       catch (League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
         return redirect('/')

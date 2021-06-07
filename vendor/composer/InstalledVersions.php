@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'fb5fa247a0c0d5a11613970a3970a9180ab3ab58',
+    'reference' => '7542a728a34ae138a087abb6a3e61fa9ccb722d0',
     'name' => 'glasswalllab/wiiseconnector',
   ),
   'versions' => 
@@ -119,7 +119,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'fb5fa247a0c0d5a11613970a3970a9180ab3ab58',
+      'reference' => '7542a728a34ae138a087abb6a3e61fa9ccb722d0',
     ),
     'graham-campbell/result-type' => 
     array (
@@ -434,15 +434,6 @@ private static $installed = array (
       array (
       ),
       'reference' => 'badb01e62383430706433191b82506b6df24ad98',
-    ),
-    'microsoft/microsoft-graph' => 
-    array (
-      'pretty_version' => '1.33.0',
-      'version' => '1.33.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '388da077b43dc2646ea46b77ecea29aa74a2b1d8',
     ),
     'mockery/mockery' => 
     array (

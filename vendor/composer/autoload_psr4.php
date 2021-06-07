@@ -61,7 +61,6 @@ return array(
     'Orchestra\\Testbench\\' => array($vendorDir . '/orchestra/testbench-core/src'),
     'Opis\\Closure\\' => array($vendorDir . '/opis/closure/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
-    'Microsoft\\Graph\\' => array($vendorDir . '/microsoft/microsoft-graph/src'),
     'League\\OAuth2\\Client\\' => array($vendorDir . '/league/oauth2-client/src'),
     'League\\MimeTypeDetection\\' => array($vendorDir . '/league/mime-type-detection/src'),
     'League\\Flysystem\\' => array($vendorDir . '/league/flysystem/src'),
@@ -82,5 +81,4 @@ return array(
     'Cron\\' => array($vendorDir . '/dragonmantank/cron-expression/src/Cron'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
     'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),
-    'Beta\\Microsoft\\Graph\\' => array($vendorDir . '/microsoft/microsoft-graph/src/Beta/Microsoft/Graph'),
 );
