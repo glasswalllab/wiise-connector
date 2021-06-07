@@ -72,7 +72,7 @@ class AuthController extends Controller
         // TEMPORARY FOR TESTING!
         return redirect('/')
           ->with('error', 'Access token received')
-          ->with('errorDetail', $tokenCache->getAccessToken());
+          ->with('errorDetail', $tokenCache->getAccessToken('wiise'));
       }
       catch (League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
         return redirect('/')
@@ -89,7 +89,7 @@ class AuthController extends Controller
   public function signout()
   {
     $tokenCache = new TokenCache();
-    $tokenCache->clearTokens();
+    $tokenCache->clearTokens($tokenCache);
     return redirect('/');
   }
 }

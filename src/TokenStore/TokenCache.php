@@ -10,36 +10,29 @@ class TokenCache {
     $token = new Token;
     $token->provider = 'wiise';
     $token->accessToken = $accessToken->getToken();
+    $token->refreshToken = $accessToken->getRefreshToken();
+    $token->tokenExpires = $accessToken->getExpires();
     $token->save();
-
-    session([
-      'accessToken' => $accessToken->getToken(),
-      'refreshToken' => $accessToken->getRefreshToken(),
-      'tokenExpires' => $accessToken->getExpires(),
-    ]);
-
-
-
   }
 
-  public function clearTokens() {
-    session()->forget('accessToken');
-    session()->forget('refreshToken');
-    session()->forget('tokenExpires');
+  public function clearTokens(Token $accessToken) {
+
+    Token::destroy($accessToken->id);
   }
 
-  public function getAccessToken() {
+  public function getAccessToken($provider) {
+
+    $token = Token::firstWhere('provider',$provider);
+    
     // Check if tokens exist
-    if (empty(session('accessToken')) ||
-        empty(session('refreshToken')) ||
-        empty(session('tokenExpires'))) {
+    if (empty($token)) {
       return '';
     }
   
     // Check if token is expired
     //Get current time + 5 minutes (to allow for time differences)
     $now = time() + 300;
-    if (session('tokenExpires') <= $now) {
+    if ($token->tokenExpires <= $now) {
       // Token is expired (or very close to it)
       // so let's refresh
   
@@ -55,7 +48,7 @@ class TokenCache {
   
       try {
         $newToken = $oauthClient->getAccessToken('refresh_token', [
-          'refresh_token' => session('refreshToken')
+          'refresh_token' => $token->refreshToken)
         ]);
   
         // Store the new values
@@ -69,14 +62,16 @@ class TokenCache {
     }
   
     // Token is still valid, just return it
-    return session('accessToken');
+    return $token;
   }
 
   public function updateTokens($accessToken) {
-    session([
-      'accessToken' => $accessToken->getToken(),
-      'refreshToken' => $accessToken->getRefreshToken(),
-      'tokenExpires' => $accessToken->getExpires()
-    ]);
+    Token::where('id',$accessToken->id)
+        ->update([
+            'accessToken' => $accessToken->getToken(),
+            'refreshToken' => $accessToken->getRefreshToken(),
+            'tokenExpires' => $accessToken->getExpires()
+            
+        ]);
   }
 }
