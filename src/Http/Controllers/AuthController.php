@@ -15,7 +15,8 @@ class AuthController extends Controller
       'redirectUri'             => config('wiiseConnector.redirectUri'),
       'urlAuthorize'            => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.authoriseEndpoint')."?resource=".config('wiiseConnector.resource'),
       'urlAccessToken'          => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.tokenEndpoint')."?resource=".config('wiiseConnector.resource'),
-      'urlResourceOwnerDetails' => config('wiiseConnector.authority'),
+      'urlResourceOwnerDetails' => '',
+      'scopes'                  => '',
     ]);
 
     $authUrl = $oauthClient->getAuthorizationUrl();
@@ -56,7 +57,8 @@ class AuthController extends Controller
         'redirectUri'             => config('wiiseConnector.redirectUri'),
         'urlAuthorize'            => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.authoriseEndpoint')."?resource=".config('wiiseConnector.resource'),
         'urlAccessToken'          => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.tokenEndpoint')."?resource=".config('wiiseConnector.resource'),
-        'urlResourceOwnerDetails' => config('wiiseConnector.authority'),
+        'urlResourceOwnerDetails' => '',
+        'scopes'                  => '',
       ]);
 
       try {
