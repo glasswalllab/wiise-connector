@@ -26,12 +26,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Glasswalllab\\Wiiseconnector\\": "src"
+            "glasswalllab\\wiiseconnector\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Glasswalllab\\Wiiseconnector\\Tests\\": "tests"
+            "glasswalllab\\wiiseconnector\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -45,10 +45,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Glasswalllab\\Wiiseconnector\\WiiseConnectorServiceProvider"
+                "glasswalllab\\wiiseconnector\\WiiseConnectorServiceProvider"
             ],
             "aliases": {
-                "WiiseConnector": "Glasswalllab\\wiiseconnector\\WiiseConnectorFacade"
+                "WiiseConnector": "glasswalllab\\wiiseconnector\\WiiseConnectorFacade"
             }
         }
     }
