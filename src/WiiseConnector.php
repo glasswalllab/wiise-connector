@@ -13,7 +13,7 @@ class WiiseConnector
         return ($result);
     }
 
-    private function callwebservice($endpoint,$method,$body)
+    public function callwebservice($endpoint,$method,$body)
     {
         $tokenCache = new TokenCache();
         $accessToken = $tokenCache->getAccessToken('wiise');
@@ -44,7 +44,7 @@ class WiiseConnector
             //parse response
             $response = $provider->getResponse($request);
             $result = $contents = json_decode($response->getBody()->getContents());
-            
+
             return($result);
 
         } catch (Exception $ex) {
