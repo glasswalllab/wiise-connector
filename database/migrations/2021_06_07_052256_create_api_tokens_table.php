@@ -18,7 +18,7 @@ class CreateApiTokensTable extends Migration
             $table->string('provider', 255);
             $table->text('accessToken')->nullable();
             $table->text('refreshToken')->nullable();
-            $table->string('tokenExpires')->nullable();
+            $table->timestamp('tokenExpires')->nullable();
             $table->timestamps();
         });
     }
