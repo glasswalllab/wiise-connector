@@ -20,6 +20,8 @@ class AuthController extends Controller
 
     $authUrl = $oauthClient->getAuthorizationUrl();
 
+dd($authUrl);
+
     // Save client state so we can validate in callback
     session(['oauthState' => $oauthClient->getState()]);
 
