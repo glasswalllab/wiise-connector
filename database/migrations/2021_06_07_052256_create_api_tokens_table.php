@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateApiTokenTable extends Migration
+class CreateApiTokensTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateApiTokenTable extends Migration
      */
     public function up()
     {
-        Schema::create('api_token', function (Blueprint $table) {
+        Schema::create('api_tokens', function (Blueprint $table) {
             $table->id();
             $table->string('provider', 255);
             $table->string('accessToken', 255);
@@ -30,6 +30,6 @@ class CreateApiTokenTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('api_token');
+        Schema::dropIfExists('api_tokens');
     }
 }
