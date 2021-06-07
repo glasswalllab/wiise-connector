@@ -6,12 +6,14 @@ use glasswalllab\wiiseconnector\Models\Token;
 class TokenCache {
 
   public function storeTokens($accessToken) {
+   
+    $token = Token::firstOrNew(['provider' => config('wiiseConnector.provider')],
+        [
+            'accessToken' => $accessToken->getToken(),
+            'refreshToken' => $accessToken->getRefreshToken(),
+            'tokenExpires' => $accessToken->getExpires(),
+        ]);
 
-    $token = new Token;
-    $token->provider = 'wiise';
-    $token->accessToken = $accessToken->getToken();
-    $token->refreshToken = $accessToken->getRefreshToken();
-    $token->tokenExpires = $accessToken->getExpires();
     $token->save();
   }
 
@@ -27,6 +29,7 @@ class TokenCache {
 
     $token = Token::firstWhere('provider',$provider);
     
+
     // Check if tokens exist
     if (empty($token)) {
       return '';

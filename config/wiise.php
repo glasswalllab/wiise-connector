@@ -4,6 +4,7 @@
  * You can place your custom package configuration in here.
  */
 return [
+    'provider'         => env('WIISE_PROVIDER', 'wiise'),
     'tennantId'         => env('WIISE_TENNANT_ID', ''),
     'appId'             => env('WIISE_APP_ID', ''),
     'appSecret'         => env('WIISE_APP_SECRET', ''),
