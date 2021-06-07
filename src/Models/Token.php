@@ -12,4 +12,7 @@ class Token extends Model
   // Disable Laravel's mass assignment protection
   protected $guarded = [];
   protected $table = 'api_tokens';
+  protected $casts = [
+      'tokenExpires' => 'timestamp',
+  ]
 }
