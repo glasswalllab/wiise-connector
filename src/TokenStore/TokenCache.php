@@ -1,15 +1,24 @@
 <?php
 
 namespace glasswalllab\wiiseconnector\TokenStore;
+use glasswalllab\wiiseconnector\Models\Token;
 
 class TokenCache {
 
   public function storeTokens($accessToken) {
+
+    $token = new Token;
+    $token->accessToken = $accessToken->getToken();
+    $token->save();
+    
     session([
       'accessToken' => $accessToken->getToken(),
       'refreshToken' => $accessToken->getRefreshToken(),
       'tokenExpires' => $accessToken->getExpires(),
     ]);
+
+
+
   }
 
   public function clearTokens() {
