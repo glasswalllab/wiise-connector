@@ -4,5 +4,8 @@ namespace Glasswalllab\WiiseConnector;
 
 class WiiseConnector
 {
-    // Build your next great package. And here
+    public function callwebservice()
+    {
+        dd("Hello World");
+    }
 }
