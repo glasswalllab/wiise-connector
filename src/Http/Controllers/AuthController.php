@@ -3,6 +3,7 @@
 namespace glasswalllab\wiiseconnector\Http\Controllers;
 
 use Illuminate\Http\Request;
+use glasswalllab\wiiseconnector\TokenStore\TokenCache;
 
 class AuthController extends Controller
 {
