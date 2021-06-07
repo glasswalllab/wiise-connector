@@ -1,6 +1,6 @@
 <?php
 
-namespace glasswalllab\wiiseconnector;
+namespace glasswalllab\wiiseconnector\Http\Controllers;
 
 use Illuminate\Http\Request;
 
@@ -10,12 +10,12 @@ class AuthController extends Controller
   {
     // Initialize the OAuth client
     $oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
-      'clientId'                => wiise('wiise.appId'),
-      'clientSecret'            => wiise('wiise.appSecret'),
-      'redirectUri'             => wiise('wiise.redirectUri'),
-      'urlAuthorize'            => wiise('wiise.authority')."/".wiise('wiise.tennantId')."/".wiise('wiise.authoriseEndpoint')."?resource=".wiise('wiise.resource'),
-      'urlAccessToken'          => wiise('wiise.authority')."/".wiise('wiise.tennantId')."/".wiise('wiise.tokenEndpoint')."?resource=".wiise('wiise.resource'),
-      'urlResourceOwnerDetails' => wiise('wiise.authority'),
+      'clientId'                => config('wiise.appId'),
+      'clientSecret'            => config('wiise.appSecret'),
+      'redirectUri'             => config('wiise.redirectUri'),
+      'urlAuthorize'            => config('wiise.authority')."/".config('wiise.tennantId')."/".config('wiise.authoriseEndpoint')."?resource=".config('wiise.resource'),
+      'urlAccessToken'          => config('wiise.authority')."/".config('wiise.tennantId')."/".config('wiise.tokenEndpoint')."?resource=".config('wiise.resource'),
+      'urlResourceOwnerDetails' => config('wiise.authority'),
     ]);
 
     $authUrl = $oauthClient->getAuthorizationUrl();
@@ -53,12 +53,12 @@ dd(config('wiise.appId'));
     if (isset($authCode)) {
       // Initialize the OAuth client
       $oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
-        'clientId'                => wiise('wiise.appId'),
-        'clientSecret'            => wiise('wiise.appSecret'),
-        'redirectUri'             => wiise('wiise.redirectUri'),
-        'urlAuthorize'            => wiise('wiise.authority')."/".wiise('wiise.tennantId')."/".wiise('wiise.authoriseEndpoint')."?resource=".wiise('wiise.resource'),
-        'urlAccessToken'          => wiise('wiise.authority')."/".wiise('wiise.tennantId')."/".wiise('wiise.tokenEndpoint')."?resource=".wiise('wiise.resource'),
-        'urlResourceOwnerDetails' => wiise('wiise.authority'),
+        'clientId'                => config('wiise.appId'),
+        'clientSecret'            => config('wiise.appSecret'),
+        'redirectUri'             => config('wiise.redirectUri'),
+        'urlAuthorize'            => config('wiise.authority')."/".config('wiise.tennantId')."/".config('wiise.authoriseEndpoint')."?resource=".config('wiise.resource'),
+        'urlAccessToken'          => config('wiise.authority')."/".config('wiise.tennantId')."/".config('wiise.tokenEndpoint')."?resource=".config('wiise.resource'),
+        'urlResourceOwnerDetails' => config('wiise.authority'),
       ]);
 
       try {
