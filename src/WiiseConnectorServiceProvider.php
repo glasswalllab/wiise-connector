@@ -3,6 +3,7 @@
 namespace Glasswalllab\WiiseConnector;
 
 use Illuminate\Support\ServiceProvider;
+use glasswalllab\wiiseconnector\Providers\EventServiceProvider;
 
 class WiiseConnectorServiceProvider extends ServiceProvider
 {
@@ -56,5 +57,8 @@ class WiiseConnectorServiceProvider extends ServiceProvider
         $this->app->singleton('wiiseConnector', function () {
             return new WiiseConnector;
         });
+
+        //Event Service Provider
+        $this->app->register(EventServiceProvider::class);
     }
 }

@@ -3,6 +3,7 @@
 namespace glasswalllab\wiiseconnector\Jobs;
 
 use glasswalllab\wiiseconnector\TokenStore\TokenCache;
+use glasswalllab\wiiseconnector\Events\WebServiceResponse;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -57,6 +58,7 @@ class CallWebService implements ShouldQueue
             $response = $oauthClient->getResponse($request);
             $result = $contents = json_decode($response->getBody()->getContents());
             
+            event(new WebServiceResponse($response));
             //save/update into DB
 
             return($result);

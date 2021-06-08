@@ -1,6 +1,7 @@
 <?php
 
 namespace glasswalllab\wiiseconnector\TokenStore;
+
 use glasswalllab\wiiseconnector\Models\Token;
 use Carbon\Carbon;
 
@@ -52,7 +53,7 @@ class TokenCache {
         'scopes'                  => config('wiiseConnector.scopes'),
       ]);
   
-      try { 
+      try {
         $newToken = $oauthClient->getAccessToken('refresh_token', [
           'refresh_token' => $token->refreshToken
         ]);
