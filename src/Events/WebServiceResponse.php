@@ -12,7 +12,7 @@ class WebServiceResponse
 
     public $response;
 
-    public function __construct(Request $response)
+    public function __construct(Response $response)
     {
         $this->response = $response;
     }
