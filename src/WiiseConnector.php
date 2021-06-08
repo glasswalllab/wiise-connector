@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class WiiseConnector
 {
-    public function getjobs()
+    public function updateJobs()
     {  
-        return(CallWebService::dispatch('/Job_List?\$select=No,Description,Bill_to_Customer_No,Status,Person_Responsible,Search_Description,Project_Manager','GET',''));
+        return(CallWebService::dispatchSync('/Job_List?\$select=No,Description,Bill_to_Customer_No,Status,Person_Responsible,Search_Description,Project_Manager','GET',''));
     }
 
     //create resource

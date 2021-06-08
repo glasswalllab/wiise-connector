@@ -56,6 +56,8 @@ class CallWebService implements ShouldQueue
             //parse response
             $response = $oauthClient->getResponse($request);
             $result = $contents = json_decode($response->getBody()->getContents());
+            
+            //save/update into DB
 
             return($result);
 
