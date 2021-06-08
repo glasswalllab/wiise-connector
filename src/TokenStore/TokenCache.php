@@ -56,9 +56,7 @@ class TokenCache {
         $newToken = $oauthClient->getAccessToken('refresh_token', [
           'refresh_token' => $token->refreshToken
         ]);
-  
-        dd($newToken);
-        
+
         // Store the new values
         $this->updateTokens($newToken);
   
