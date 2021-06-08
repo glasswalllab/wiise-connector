@@ -13,9 +13,9 @@ class CallWebService implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    private $endpoint;
-    private $method;
-    private $body;
+    public $endpoint;
+    public $method;
+    public $body;
 
     public function __construct($endpoint,$method,$body)
     {
