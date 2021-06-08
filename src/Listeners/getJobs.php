@@ -8,6 +8,6 @@ class getJobs
 {
     public function handle(WebServiceResponse $event)
     {
-        dd($event);
+        dd("Hello World");
     }
 }
