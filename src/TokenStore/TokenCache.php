@@ -29,7 +29,6 @@ class TokenCache {
 
     $token = Token::firstWhere('provider',$provider);
     
-
     // Check if tokens exist
     if (empty($token)) {
       return '';
@@ -50,6 +49,7 @@ class TokenCache {
         'urlAuthorize'            => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.authoriseEndpoint')."?resource=".config('wiiseConnector.resource'),
         'urlAccessToken'          => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.tokenEndpoint')."?resource=".config('wiiseConnector.resource'),
         'urlResourceOwnerDetails' => '',
+        'scopes'                  => config('wiiseConnector.scopes'),
       ]);
   
       try {

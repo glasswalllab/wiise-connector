@@ -30,18 +30,19 @@ class WiiseConnector
         $options['headers']['content-type'] = 'application/json';
         $options['body'] = $body; //json encoded value
 
-        $provider = new \League\OAuth2\Client\Provider\GenericProvider([
+        $oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
             'clientId'                => config('wiiseConnector.appId'),
             'clientSecret'            => config('wiiseConnector.appSecret'),
             'redirectUri'             => config('wiiseConnector.redirectUri'),
             'urlAuthorize'            => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.authoriseEndpoint')."?resource=".config('wiiseConnector.resource'),
             'urlAccessToken'          => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.tokenEndpoint')."?resource=".config('wiiseConnector.resource'),
             'urlResourceOwnerDetails' => '',
+            'scopes'                  => config('wiiseConnector.scopes'),
           ]);
 
         try
         {
-            $request = $provider->getAuthenticatedRequest(
+            $request = $oauthClient->getAuthenticatedRequest(
                 $method,
                 $url,
                 $accessToken,
@@ -49,7 +50,7 @@ class WiiseConnector
             );
 
             //parse response
-            $response = $provider->getResponse($request);
+            $response = $oauthClient->getResponse($request);
             $result = $contents = json_decode($response->getBody()->getContents());
 
             return($result);
