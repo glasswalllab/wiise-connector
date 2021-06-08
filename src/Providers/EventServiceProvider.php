@@ -4,7 +4,7 @@ namespace glasswalllab\wiiseconnector\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use glasswalllab\wiiseconnector\Events\WebServiceResponse;
-use glasswalllab\wiiseconnector\Listerners\getJobs;
+use glasswalllab\wiiseconnector\Listeners\getJobs;
 
 class EventServiceProvider extends ServiceProvider
 {
