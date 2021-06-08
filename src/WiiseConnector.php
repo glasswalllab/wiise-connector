@@ -2,7 +2,7 @@
 
 namespace Glasswalllab\WiiseConnector;
 
-use glasswalllab\wiiseconnector\TokenStore\TokenCache;
+use glasswalllab\wiiseconnector\Jobs\CallWebService;
 use Illuminate\Http\Request;
 
 class WiiseConnector
@@ -22,41 +22,6 @@ class WiiseConnector
 
     private function callwebservice($endpoint,$method,$body)
     {
-        $tokenCache = new TokenCache();
-        $accessToken = $tokenCache->getAccessToken('wiise');
-
-        $url = config('wiiseConnector.baseUrl').config('wiiseConnector.tennantId')."/Production/ODataV4/Company('".config('wiiseConnector.companyName')."')".$endpoint;
-
-        $options['headers']['content-type'] = 'application/json';
-        $options['body'] = $body; //json encoded value
-
-        $oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
-            'clientId'                => config('wiiseConnector.appId'),
-            'clientSecret'            => config('wiiseConnector.appSecret'),
-            'redirectUri'             => config('wiiseConnector.redirectUri'),
-            'urlAuthorize'            => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.authoriseEndpoint')."?resource=".config('wiiseConnector.resource'),
-            'urlAccessToken'          => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.tokenEndpoint')."?resource=".config('wiiseConnector.resource'),
-            'urlResourceOwnerDetails' => '',
-            'scopes'                  => config('wiiseConnector.scopes'),
-          ]);
-
-        try
-        {
-            $request = $oauthClient->getAuthenticatedRequest(
-                $method,
-                $url,
-                $accessToken,
-                $options,
-            );
-
-            //parse response
-            $response = $oauthClient->getResponse($request);
-            $result = $contents = json_decode($response->getBody()->getContents());
-
-            return($result);
-
-        } catch (Exception $ex) {
-            return($ex);
-        }
+        CallWebService::dispatch($endpoint,$method,$body);
     }
 }
