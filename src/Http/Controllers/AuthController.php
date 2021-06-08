@@ -62,7 +62,7 @@ class AuthController extends Controller
         'scopes'                  => config('wiiseConnector.scopes'),
       ]);
 
-      try {
+      try { 
         // Make the token request
         $accessToken = $oauthClient->getAccessToken('authorization_code', [
           'code' => $authCode
