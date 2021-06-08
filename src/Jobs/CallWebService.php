@@ -13,9 +13,9 @@ class CallWebService implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public $endpoint;
-    public $method;
-    public $body;
+    private $endpoint;
+    private $method;
+    private $body;
 
     public function __construct($endpoint,$method,$body)
     {
@@ -29,7 +29,7 @@ class CallWebService implements ShouldQueue
         $tokenCache = new TokenCache();
         $accessToken = $tokenCache->getAccessToken('wiise');
 
-        $url = config('wiiseConnector.baseUrl').config('wiiseConnector.tennantId')."/Production/ODataV4/Company('".config('wiiseConnector.companyName')."')".$endpoint;
+        $url = config('wiiseConnector.baseUrl').config('wiiseConnector.tennantId')."/Production/ODataV4/Company('".config('wiiseConnector.companyName')."')".$this->endpoint;
 
         $options['headers']['content-type'] = 'application/json';
         $options['body'] = $body; //json encoded value

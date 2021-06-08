@@ -9,7 +9,7 @@ class WiiseConnector
 {
     public function getjobs()
     {  
-        return($this->callwebservice('/Job_List?\$select=No,Description,Bill_to_Customer_No,Status,Person_Responsible,Search_Description,Project_Manager','GET','')->value);
+        return(CallWebService::dispatch('/Job_List?\$select=No,Description,Bill_to_Customer_No,Status,Person_Responsible,Search_Description,Project_Manager','GET',''));
     }
 
     //create resource
@@ -19,9 +19,4 @@ class WiiseConnector
     //get job task lines
 
     //post job journal
-
-    private function callwebservice($endpoint,$method,$body)
-    {
-        CallWebService::dispatch($endpoint,$method,$body);
-    }
 }
