@@ -4,8 +4,8 @@
  * You can place your custom package configuration in here.
  */
 return [
-    'provider'         => env('WIISE_PROVIDER', 'wiise'),
-    'tenantId'         => env('WIISE_TENANT_ID', ''),
+    'provider'          => env('WIISE_PROVIDER', 'wiise'),
+    'tenantId'          => env('WIISE_TENANT_ID', ''),
     'appId'             => env('WIISE_APP_ID', ''),
     'appSecret'         => env('WIISE_APP_SECRET', ''),
     'redirectUri'       => env('WIISE_REDIRECT_URI', ''),

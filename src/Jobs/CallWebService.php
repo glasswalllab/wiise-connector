@@ -33,7 +33,7 @@ class CallWebService implements ShouldQueue
         $url = config('wiiseConnector.baseUrl').config('wiiseConnector.tenantId')."/Production/ODataV4/Company('".config('wiiseConnector.companyName')."')".$this->endpoint;
 
         $options['headers']['content-type'] = 'application/json';
-        $options['headers']['If-Match'] = '*';
+        $options['headers']['if-match'] = '*';
         $options['body'] = $this->body; //json encoded value
         
         $oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
