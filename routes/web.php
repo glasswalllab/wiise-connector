@@ -7,4 +7,5 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/signin', [AuthController::class, 'signin']);
     Route::get('/callback', [AuthController::class, 'callback']);
     Route::get('/signout/{provider}', [AuthController::class, 'signout']);
+    Route::get('/refresh', [AuthController::class, 'refresh']);
 });
