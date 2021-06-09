@@ -50,14 +50,16 @@ class CallWebService implements ShouldQueue
 
         try
         {
-            $request = $this->oauthClient->getAuthenticatedRequest(
-                $this->method,
-                $url,
-                $accessToken,
-                $options,
-            );
+            
             //event(new ResponseReceived($oauthClient->getResponse($request)));
-            return $this->authClient->getParsedResponse($request);
+            return $this->authClient->getResponse(
+                $this->oauthClient->getAuthenticatedRequest(
+                    $this->method,
+                    $url,
+                    $accessToken,
+                    $options,
+                )
+            );
             
         } catch (Exception $ex) {
             return($ex);
