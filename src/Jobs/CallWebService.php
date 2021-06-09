@@ -56,7 +56,7 @@ class CallWebService implements ShouldQueue
                 $options,
             );
             //event(new ResponseReceived($oauthClient->getResponse($request)));
-            return $response->json();
+            return $response;
             
         } catch (Exception $ex) {
             return($ex);
