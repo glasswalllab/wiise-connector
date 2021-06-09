@@ -17,6 +17,7 @@ class CallWebService implements ShouldQueue
     private $endpoint;
     private $method;
     private $body;
+    private $response;
 
     public function __construct($endpoint,$method,$body)
     {
@@ -56,15 +57,15 @@ class CallWebService implements ShouldQueue
 
             //parse response
             $response = $oauthClient->getResponse($request);
-            $result = $contents = json_decode($response->getBody()->getContents());
+            $this->$response = json_decode($response->getBody()->getContents());
             
-            //event(new WebServiceResponse($result));
-            //save/update into DB
-
-            return($result);
-
         } catch (Exception $ex) {
             return($ex);
         }
+    }
+
+    public function getResponse()
+    {
+        return $this->response;
     }
 }
