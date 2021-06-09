@@ -3,7 +3,7 @@
 namespace glasswalllab\wiiseconnector\Jobs;
 
 use glasswalllab\wiiseconnector\TokenStore\TokenCache;
-use glasswalllab\wiiseconnector\Events\WebServiceResponse;
+use glasswalllab\wiiseconnector\Events\ResponseReceived;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -55,8 +55,8 @@ class CallWebService implements ShouldQueue
                 $accessToken,
                 $options,
             );
-            
-            return $oauthClient->getResponse($request);
+            event(new ResponseReceived($oauthClient->getResponse($request)));
+            return 1;
             
         } catch (Exception $ex) {
             return($ex);
