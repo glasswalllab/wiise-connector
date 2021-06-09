@@ -8,6 +8,6 @@ class UpdateResponse
 {
     public function handle(ResponseReceived $event)
     {
-        dd($event);
+        dd(json_decode($event->getBody()->getContents()));
     }
 }
