@@ -34,7 +34,7 @@ class CallWebService implements ShouldQueue
 
 
 
-        $options['headers'] => json_encode(array(
+        $options['headers'] = json_encode(array(
             'content-type' => 'application/json',
             'If-Match' => '*'
         ));
