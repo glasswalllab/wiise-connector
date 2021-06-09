@@ -57,8 +57,5 @@ class WiiseConnectorServiceProvider extends ServiceProvider
         $this->app->singleton('wiiseConnector', function () {
             return new WiiseConnector;
         });
-
-        //Event Service Provider
-        $this->app->register(EventServiceProvider::class);
     }
 }
