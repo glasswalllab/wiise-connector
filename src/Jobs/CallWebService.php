@@ -17,7 +17,6 @@ class CallWebService implements ShouldQueue
     private $endpoint;
     private $method;
     private $body;
-    private $response;
 
     public function __construct($endpoint,$method,$body)
     {
@@ -61,10 +60,5 @@ class CallWebService implements ShouldQueue
         } catch (Exception $ex) {
             return($ex);
         }
-    }
-
-    public function getResponse()
-    {
-        return $this->response;
     }
 }
