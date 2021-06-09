@@ -32,13 +32,8 @@ class CallWebService implements ShouldQueue
 
         $url = config('wiiseConnector.baseUrl').config('wiiseConnector.tenantId')."/Production/ODataV4/Company('".config('wiiseConnector.companyName')."')".$this->endpoint;
 
-
-
-        $options['headers'] = json_encode(array(
-            'content-type' => 'application/json',
-            'If-Match' => '*'
-        ));
-
+        $options['headers']['Content-Type'] = 'application/json';
+        $options['headers']['If-Match'] = '*';
 
         $options['body'] = $this->body; //json encoded value
         
