@@ -30,7 +30,7 @@ class CallWebService implements ShouldQueue
         $tokenCache = new TokenCache();
         $accessToken = $tokenCache->getAccessToken('wiise');
 
-        $url = config('wiiseConnector.baseUrl').config('wiiseConnector.tennantId')."/Production/ODataV4/Company('".config('wiiseConnector.companyName')."')".$this->endpoint;
+        $url = config('wiiseConnector.baseUrl').config('wiiseConnector.tenantId')."/Production/ODataV4/Company('".config('wiiseConnector.companyName')."')".$this->endpoint;
 
         $options['headers']['content-type'] = 'application/json';
         $options['body'] = $this->body; //json encoded value
@@ -39,8 +39,8 @@ class CallWebService implements ShouldQueue
             'clientId'                => config('wiiseConnector.appId'),
             'clientSecret'            => config('wiiseConnector.appSecret'),
             'redirectUri'             => config('wiiseConnector.redirectUri'),
-            'urlAuthorize'            => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.authoriseEndpoint'),
-            'urlAccessToken'          => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.tokenEndpoint'),
+            'urlAuthorize'            => config('wiiseConnector.authority').config('wiiseConnector.tenantId').config('wiiseConnector.authoriseEndpoint'),
+            'urlAccessToken'          => config('wiiseConnector.authority').config('wiiseConnector.tenantId').config('wiiseConnector.tokenEndpoint'),
             'urlResourceOwnerDetails' => config('wiiseConnector.resource'),
             'scopes'                  => config('wiiseConnector.scopes'),
           ]);

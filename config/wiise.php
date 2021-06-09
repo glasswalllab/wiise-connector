@@ -5,7 +5,7 @@
  */
 return [
     'provider'         => env('WIISE_PROVIDER', 'wiise'),
-    'tennantId'         => env('WIISE_TENNANT_ID', ''),
+    'tenantId'         => env('WIISE_TENANT_ID', ''),
     'appId'             => env('WIISE_APP_ID', ''),
     'appSecret'         => env('WIISE_APP_SECRET', ''),
     'redirectUri'       => env('WIISE_REDIRECT_URI', ''),
