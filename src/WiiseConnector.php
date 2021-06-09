@@ -14,12 +14,12 @@ class WiiseConnector
         $tokenCache = new TokenCache();
         $accessToken = $tokenCache->getAccessToken('wiise');
 
-        $url = config('wiiseConnector.baseUrl').config('wiiseConnector.tenantId')."/Production/ODataV4/Company('".config('wiiseConnector.companyName')."')".$this->endpoint;
+        $url = config('wiiseConnector.baseUrl').config('wiiseConnector.tenantId')."/Production/ODataV4/Company('".config('wiiseConnector.companyName')."')".$endpoint;
 
         $options['headers']['Content-Type'] = 'application/json';
         $options['headers']['If-Match'] = '*';
 
-        $options['body'] = $this->body; //json encoded value
+        $options['body'] = $body; //json encoded value
         
         $this->oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
             'clientId'                => config('wiiseConnector.appId'),
@@ -34,7 +34,7 @@ class WiiseConnector
         try
         {
             $request = $this->oauthClient->getAuthenticatedRequest(
-                $this->method,
+                $method,
                 $url,
                 $accessToken,
                 $options,
