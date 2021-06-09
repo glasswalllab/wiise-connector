@@ -60,7 +60,7 @@ class TokenCache {
         ]);
 
         // Store the new values
-        $this->updateTokens($newToken);
+        $this->updateTokens($token->id,$newToken);
 
         return $newToken->getToken();
 
@@ -74,13 +74,13 @@ class TokenCache {
     return $token->accessToken;
   }
 
-  public function updateTokens($accessToken) {
-    Token::where('id',$accessToken->id)
+  public function updateTokens($id,$accessToken) {
+
+    Token::where('id',$id)
         ->update([
             'accessToken' => $accessToken->getToken(),
             'refreshToken' => $accessToken->getRefreshToken(),
-            'tokenExpires' => $accessToken->getExpires()
+            'tokenExpires' => Carbon::createFromTimestamp($accessToken->getExpires())->toDateTimeString(),
             
         ]);
   }
-}
