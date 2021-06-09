@@ -44,7 +44,7 @@ class CallWebService implements ShouldQueue
             'urlAccessToken'          => config('wiiseConnector.authority').config('wiiseConnector.tenantId').config('wiiseConnector.tokenEndpoint'),
             'urlResourceOwnerDetails' => config('wiiseConnector.resource'),
             'scopes'                  => config('wiiseConnector.scopes'),
-          ]);
+        ]);
 
         try
         {
