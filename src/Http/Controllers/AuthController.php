@@ -95,12 +95,4 @@ class AuthController extends Controller
     $tokenCache->clearTokens($provider);
     return redirect('/');
   }
-
-  // TEMPORARY FOR TESTING!
-  public function refresh() {
-    
-    $tokenCache = new TokenCache();
-    return $tokenCache->getAccessToken('wiise');
-  }
-
 }
