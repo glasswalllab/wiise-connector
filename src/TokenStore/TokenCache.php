@@ -39,33 +39,35 @@ class TokenCache {
     //Get current time + 5 minutes (to allow for time differences)
     $now = time() + 300;
     if (strtotime($token->tokenExpires) <= $now) {
-      // Token is expired (or very close to it)
-      // so let's refresh
+        // Token is expired (or very close to it)
+        // so let's refresh
   
-      // Initialize the OAuth client
-      $oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
-        'clientId'                => config('wiiseConnector.appId'),
-        'clientSecret'            => config('wiiseConnector.appSecret'),
-        'redirectUri'             => config('wiiseConnector.redirectUri'),
-        'urlAuthorize'            => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.authoriseEndpoint')."?resource=".config('wiiseConnector.resource'),
-        'urlAccessToken'          => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.tokenEndpoint')."?resource=".config('wiiseConnector.resource'),
-        'urlResourceOwnerDetails' => '',
-        'scopes'                  => config('wiiseConnector.scopes'),
-      ]);
+        // Initialize the OAuth client
+        // Initialize the OAuth client
+        $oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
+            'clientId'                => config('wiiseConnector.appId'),
+            'clientSecret'            => config('wiiseConnector.appSecret'),
+            'redirectUri'             => config('wiiseConnector.redirectUri'),
+            'urlAuthorize'            => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.authoriseEndpoint'),
+            'urlAccessToken'          => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.tokenEndpoint'),
+            'urlResourceOwnerDetails' => config('wiiseConnector.resource'),
+            'scopes'                  => config('wiiseConnector.scopes'),
+        ]);
   
-      try {
+        try {
         $newToken = $oauthClient->getAccessToken('refresh_token', [
-          'refresh_token' => $token->refreshToken
+            'refresh_token' => $token->refreshToken
         ]);
 
         // Store the new values
         $this->updateTokens($newToken);
-  
+
         return $newToken->getToken();
-      }
-      catch (League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
-        return '';
-      }
+
+        }
+        catch (League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
+            return '';
+        }
     }
   
     // Token is still valid, just return it

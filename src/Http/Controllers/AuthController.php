@@ -14,9 +14,9 @@ class AuthController extends Controller
       'clientId'                => config('wiiseConnector.appId'),
       'clientSecret'            => config('wiiseConnector.appSecret'),
       'redirectUri'             => config('wiiseConnector.redirectUri'),
-      'urlAuthorize'            => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.authoriseEndpoint')."?resource=".config('wiiseConnector.resource'),
-      'urlAccessToken'          => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.tokenEndpoint')."?resource=".config('wiiseConnector.resource'),
-      'urlResourceOwnerDetails' => '',
+      'urlAuthorize'            => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.authoriseEndpoint'),
+      'urlAccessToken'          => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.tokenEndpoint'),
+      'urlResourceOwnerDetails' => config('wiiseConnector.resource'),
       'scopes'                  => config('wiiseConnector.scopes'),
     ]);
 
@@ -52,13 +52,14 @@ class AuthController extends Controller
     $authCode = $request->query('code');
     if (isset($authCode)) {
       // Initialize the OAuth client
+      // Initialize the OAuth client
       $oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
         'clientId'                => config('wiiseConnector.appId'),
         'clientSecret'            => config('wiiseConnector.appSecret'),
         'redirectUri'             => config('wiiseConnector.redirectUri'),
-        'urlAuthorize'            => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.authoriseEndpoint')."?resource=".config('wiiseConnector.resource'),
-        'urlAccessToken'          => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.tokenEndpoint')."?resource=".config('wiiseConnector.resource'),
-        'urlResourceOwnerDetails' => '',
+        'urlAuthorize'            => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.authoriseEndpoint'),
+        'urlAccessToken'          => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.tokenEndpoint'),
+        'urlResourceOwnerDetails' => config('wiiseConnector.resource'),
         'scopes'                  => config('wiiseConnector.scopes'),
       ]);
 
@@ -88,16 +89,16 @@ class AuthController extends Controller
       ->with('errorDetail', $request->query('error_description'));
   }
 
-  public function signout($provider)
-  {
+  public function signout($provider) {
+
     $tokenCache = new TokenCache();
     $tokenCache->clearTokens($provider);
     return redirect('/');
   }
 
-  //Used for testing
-  public function refresh()
-  {
+  // TEMPORARY FOR TESTING!
+  public function refresh() {
+    
     $tokenCache = new TokenCache();
     return $tokenCache->getAccessToken('wiise');
   }
