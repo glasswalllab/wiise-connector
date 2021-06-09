@@ -40,9 +40,9 @@ class CallWebService implements ShouldQueue
             'clientId'                => config('wiiseConnector.appId'),
             'clientSecret'            => config('wiiseConnector.appSecret'),
             'redirectUri'             => config('wiiseConnector.redirectUri'),
-            'urlAuthorize'            => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.authoriseEndpoint')."?resource=".config('wiiseConnector.resource'),
-            'urlAccessToken'          => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.tokenEndpoint')."?resource=".config('wiiseConnector.resource'),
-            'urlResourceOwnerDetails' => '',
+            'urlAuthorize'            => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.authoriseEndpoint'),
+            'urlAccessToken'          => config('wiiseConnector.authority').config('wiiseConnector.tennantId').config('wiiseConnector.tokenEndpoint'),
+            'urlResourceOwnerDetails' => config('wiiseConnector.resource'),
             'scopes'                  => config('wiiseConnector.scopes'),
           ]);
 
@@ -56,8 +56,7 @@ class CallWebService implements ShouldQueue
             );
 
             //parse response
-            $response = $oauthClient->getResponse($request);
-            $this->$response = json_decode($response->getBody()->getContents());
+            $this->response = json_decode($oauthClient->getResponse($request)->getBody()->getContents());
             
         } catch (Exception $ex) {
             return($ex);
