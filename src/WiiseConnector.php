@@ -7,17 +7,15 @@ use Illuminate\Http\Request;
 
 class WiiseConnector
 {
-    public function getJobs()
+    public function CallWebServiceSync($endpoint,$method,$body)
     {  
-        $call = CallWebService::dispatchSync('/Job_List?\$select=No,Description,Bill_to_Customer_No,Status,Person_Responsible,Search_Description,Project_Manager','GET','');
+        $call = CallWebService::dispatchSync($endpoint,$method,$body);
         dd($call);
     }
 
-    //create resource
-
-    //update resource
-
-    //get job task lines
-
-    //post job journal
+    public function CallWebServiceQueue($endpoint,$method,$body)
+    {  
+        $call = CallWebService::dispatch($endpoint,$method,$body);
+        dd($call);
+    }
 }
