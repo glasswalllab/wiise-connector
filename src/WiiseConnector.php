@@ -9,8 +9,7 @@ class WiiseConnector
 {
     public function updateJobs()
     {  
-        CallWebService::dispatchSync('/Job_List?\$select=No,Description,Bill_to_Customer_No,Status,Person_Responsible,Search_Description,Project_Manager','GET','');
-        return "Updated Jobs";
+        return(CallWebService::dispatchSync('/Job_List?\$select=No,Description,Bill_to_Customer_No,Status,Person_Responsible,Search_Description,Project_Manager','GET',''));
     }
 
     //create resource
