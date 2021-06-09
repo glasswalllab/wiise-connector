@@ -10,6 +10,7 @@ class WiiseConnector
     public function CallWebServiceSync($endpoint,$method,$body)
     {  
         $call = CallWebService::dispatchSync($endpoint,$method,$body);
+        return($call);
     }
 
     public function CallWebServiceQueue($endpoint,$method,$body)

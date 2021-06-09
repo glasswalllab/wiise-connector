@@ -55,9 +55,8 @@ class CallWebService implements ShouldQueue
                 $accessToken,
                 $options,
             );
-
-            //parse response
-            return json_decode($oauthClient->getResponse($request)->getBody()->getContents());
+            
+            return $oauthClient->getResponse($request);
             
         } catch (Exception $ex) {
             return($ex);
