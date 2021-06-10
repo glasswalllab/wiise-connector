@@ -17,7 +17,26 @@ composer require glasswalllab/wiise-connector
 ## Usage
 
 ```php
-// Usage description here
+Setup App in Microsoft Azure
+
+Need to update .env with the following
+
+WIISE_COMPANY_NAME=YOUR_COMAPNY_NAME
+WIISE_TENANT_ID=YOUR_TENANT_ID
+WIISE_APP_ID=YOUR_APP_ID
+WIISE_APP_SECRET=YOUR_APP_SECRET
+WIISE_REDIRECT_URI=YOUR_REDIRECT_URKL
+
+WIISE_PROVIDER=wiise
+WIISE_SCOPES='Financials.ReadWrite.All offline_access'
+WIISE_AUTHORITY=https://login.microsoftonline.com/
+WIISE_AUTHORISE_ENDPOINT=/oauth2/authorize?resource=https://api.businesscentral.dynamics.com
+WIISE_TOKEN_ENDPOINT=/oauth2/token?resource=https://api.businesscentral.dynamics.com
+WIISE_RESOURCE=https://api.businesscentral.dynamics.com
+WIISE_BASE_API_URL=https://wiise.api.bc.dynamics.com/v2.0/
+
+Run php artisan migrate to load the api_token table
+
 ```
 
 ### Testing
