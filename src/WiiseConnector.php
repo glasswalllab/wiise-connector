@@ -41,7 +41,7 @@ class WiiseConnector
             );
 
             $response = $this->oauthClient->getResponse($request);
-            return $response->getBody()->getContents()->value;
+            return $response->getBody()->getContents();
             //event(new ResponseReceived($oauthClient->getResponse($request)));
             
         } catch (Exception $ex) {
