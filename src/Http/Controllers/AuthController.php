@@ -11,13 +11,13 @@ class AuthController extends Controller
   {
     // Initialize the OAuth client
     $oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
-      'clientId'                => config('wiiseConnector.appId'),
-      'clientSecret'            => config('wiiseConnector.appSecret'),
-      'redirectUri'             => config('wiiseConnector.redirectUri'),
-      'urlAuthorize'            => config('wiiseConnector.authority').config('wiiseConnector.tenantId').config('wiiseConnector.authoriseEndpoint'),
-      'urlAccessToken'          => config('wiiseConnector.authority').config('wiiseConnector.tenantId').config('wiiseConnector.tokenEndpoint'),
-      'urlResourceOwnerDetails' => config('wiiseConnector.resource'),
-      'scopes'                  => config('wiiseConnector.scopes'),
+      'clientId'                => config('wiiseconnector.appId'),
+      'clientSecret'            => config('wiiseconnector.appSecret'),
+      'redirectUri'             => config('wiiseconnector.redirectUri'),
+      'urlAuthorize'            => config('wiiseconnector.authority').config('wiiseconnector.tenantId').config('wiiseconnector.authoriseEndpoint'),
+      'urlAccessToken'          => config('wiiseconnector.authority').config('wiiseconnector.tenantId').config('wiiseconnector.tokenEndpoint'),
+      'urlResourceOwnerDetails' => config('wiiseconnector.resource'),
+      'scopes'                  => config('wiiseconnector.scopes'),
     ]);
 
     $authUrl = $oauthClient->getAuthorizationUrl();
@@ -54,13 +54,13 @@ class AuthController extends Controller
       // Initialize the OAuth client
       // Initialize the OAuth client
       $oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
-        'clientId'                => config('wiiseConnector.appId'),
-        'clientSecret'            => config('wiiseConnector.appSecret'),
-        'redirectUri'             => config('wiiseConnector.redirectUri'),
-        'urlAuthorize'            => config('wiiseConnector.authority').config('wiiseConnector.tenantId').config('wiiseConnector.authoriseEndpoint'),
-        'urlAccessToken'          => config('wiiseConnector.authority').config('wiiseConnector.tenantId').config('wiiseConnector.tokenEndpoint'),
-        'urlResourceOwnerDetails' => config('wiiseConnector.resource'),
-        'scopes'                  => config('wiiseConnector.scopes'),
+        'clientId'                => config('wiiseconnector.appId'),
+        'clientSecret'            => config('wiiseconnector.appSecret'),
+        'redirectUri'             => config('wiiseconnector.redirectUri'),
+        'urlAuthorize'            => config('wiiseconnector.authority').config('wiiseconnector.tenantId').config('wiiseconnector.authoriseEndpoint'),
+        'urlAccessToken'          => config('wiiseconnector.authority').config('wiiseconnector.tenantId').config('wiiseconnector.tokenEndpoint'),
+        'urlResourceOwnerDetails' => config('wiiseconnector.resource'),
+        'scopes'                  => config('wiiseconnector.scopes'),
       ]);
 
       try { 
