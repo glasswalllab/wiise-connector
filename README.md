@@ -34,6 +34,12 @@ WIISE_RESOURCE=https://api.businesscentral.dynamics.com
 WIISE_BASE_API_URL=https://wiise.api.bc.dynamics.com/v2.0/
 ```
 
+3. Publish the migration file for the api_token database table
+
+```
+php artisan vendor:publish --provider="glasswalllab\wiiseconnector\WiseConnectorServiceProvider" --tag="migrations"
+```
+
 3. Run **php artisan migrate** to create the api_token database table
 
 4. Optional: Export the welcome view blade file
