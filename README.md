@@ -42,7 +42,7 @@ WIISE_BASE_API_URL=https://wiise.api.bc.dynamics.com/v2.0/
 php artisan vendor:publish --provider="glasswalllab\wiiseconnector\WiiseConnectorServiceProvider" --tag="views"
 ```
 
-### Sample Usage
+### Sample Usage (Laravel)
 
 ```php
 <?php
