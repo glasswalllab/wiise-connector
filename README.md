@@ -16,7 +16,6 @@ composer require glasswalllab/wiiseconnector
 
 ## Usage
 
-```
 1. Setup Web App in Microsoft Azure AD to obtain required credentials.
 
 2. Include the following variables in your .env
@@ -45,7 +44,6 @@ WIISE_BASE_API_URL=https://wiise.api.bc.dynamics.com/v2.0/
 php artisan vendor:publish --provider="glasswalllab\wiiseconnector\WiiseConnectorServiceProvider" --tag="views"
 ```
 
-```
 ### Testing
 
 ```bash
