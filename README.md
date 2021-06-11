@@ -2,9 +2,7 @@
  
 This package provides an integration (OAuth 2.0) to Wiise (Microsoft Business Central).
 
-[![Source Code](https://img.shields.io/badge/source-glasswalllab/wiise-connector-blue.svg?style=flat-square)](https://github.com/glasswalllab/wiise-connector)
 [![Latest Version](https://img.shields.io/github/release/glasswalllab/wiise-connector.svg?style=flat-square)](https://github.com/glasswalllab/wiise-connector/releases)
-[![Build Status](https://img.shields.io/github/workflow/status/glasswalllab/wiise-connector/CI?label=CI&logo=github&style=flat-square)](https://github.com/glasswalllab/wiise-connector/actions?query=workflow%3ACI)
 
 ## Installation
 
