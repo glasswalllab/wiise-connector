@@ -1,10 +1,6 @@
 # Very short description of the package
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/glasswalllab/wiiseconnector.svg?style=flat-square)](https://packagist.org/packages/glasswalllab/wiiseconnector)
-[![Total Downloads](https://img.shields.io/packagist/dt/glasswalllab/wiiseconnector.svg?style=flat-square)](https://packagist.org/packages/glasswalllab/wiiseconnector)
-![GitHub Actions](https://github.com/glasswalllab/wiiseconnector/actions/workflows/main.yml/badge.svg)
-
-Provides a connection to Wiise (Microsoft Business Central) for Laravel applications.
+A PHP wrapper for Wiise (Microsoft Business Central).
 
 ## Installation
 
@@ -90,7 +86,7 @@ class WiiseTest extends Controller
     }
 
     //Update Resource
-    //$this->updateResource('R0100','Stephen Reid Test3','27.53','false');
+    //updateResource('R0100','Stephen Reid Test3','27.53','false');
     public function updateResource($resourceNo,$name,$rate,$blocked)
     {
         if($blocked != 'true')
@@ -101,7 +97,7 @@ class WiiseTest extends Controller
         $data = json_encode(array(
             'Name' => $name,
             'Direct_Unit_Cost' => round(floatval($rate),2),
-            'Base_Unit_of_Measure' =>'HOUR',
+            'Base_Unit_of_Measure' =>'HOUR', //Ensure this is setup in Wiise
             'Blocked' => $blocked
         ));
 
@@ -120,10 +116,10 @@ class WiiseTest extends Controller
             'Journal_Batch_Name' => 'DEFAULT', //Ensure this is setup in Wiise
             'Gen_Bus_Posting_Group' => 'DOMESTIC', //Ensure this is setup in Wiise
             'Document_No' => 'LJOB', //Ensure this is setup in Wiise
-            'Posting_Date' => '2018-03-13',
-            'Job_No' => 'JOB00010',
-            'Job_Task_No' => '1010',
-            'No' => 'R0020',
+            'Posting_Date' => '2018-03-13', //test values
+            'Job_No' => 'JOB00010', //test values
+            'Job_Task_No' => '1010', //test values
+            'No' => 'R0020', //test values
             'Quantity' => floatval(8.3)
         ));
 
