@@ -1,8 +1,8 @@
 # Very short description of the package
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/glasswalllab/wiise-connector.svg?style=flat-square)](https://packagist.org/packages/glasswalllab/wiise-connector)
-[![Total Downloads](https://img.shields.io/packagist/dt/glasswalllab/wiise-connector.svg?style=flat-square)](https://packagist.org/packages/glasswalllab/wiise-connector)
-![GitHub Actions](https://github.com/glasswalllab/wiise-connector/actions/workflows/main.yml/badge.svg)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/glasswalllab/wiiseconnector.svg?style=flat-square)](https://packagist.org/packages/glasswalllab/wiiseconnector)
+[![Total Downloads](https://img.shields.io/packagist/dt/glasswalllab/wiiseconnector.svg?style=flat-square)](https://packagist.org/packages/glasswalllab/wiiseconnector)
+![GitHub Actions](https://github.com/glasswalllab/wiiseconnector/actions/workflows/main.yml/badge.svg)
 
 Provides a connection to Wiise (Microsoft Business Central) for Laravel applications.
 
@@ -11,16 +11,17 @@ Provides a connection to Wiise (Microsoft Business Central) for Laravel applicat
 You can install the package via composer:
 
 ```bash
-composer require glasswalllab/wiise-connector
+composer require glasswalllab/wiiseconnector
 ```
 
 ## Usage
 
-```php
-Setup App in Microsoft Azure
+```
+1. Setup Web App in Microsoft Azure AD to obtain required credentials.
 
-Need to update .env with the following
+2. Include the following variables in your .env
 
+```
 WIISE_COMPANY_NAME=YOUR_COMAPNY_NAME
 WIISE_TENANT_ID=YOUR_TENANT_ID
 WIISE_APP_ID=YOUR_APP_ID
@@ -34,11 +35,17 @@ WIISE_AUTHORISE_ENDPOINT=/oauth2/authorize?resource=https://api.businesscentral.
 WIISE_TOKEN_ENDPOINT=/oauth2/token?resource=https://api.businesscentral.dynamics.com
 WIISE_RESOURCE=https://api.businesscentral.dynamics.com
 WIISE_BASE_API_URL=https://wiise.api.bc.dynamics.com/v2.0/
-
-Run php artisan migrate to load the api_token table
-
 ```
 
+3. Run **php artisan migrate** to create the api_token database table
+
+4. Optional: Export the welcome view blade file
+
+```
+php artisan vendor:publish --provider="glasswalllab\wiiseconnector\WiiseConnectorServiceProvider" --tag="views"
+```
+
+```
 ### Testing
 
 ```bash

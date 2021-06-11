@@ -16,7 +16,7 @@ class WiiseConnectorServiceProvider extends ServiceProvider
          * Optional methods to load your package assets
          */
         // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'wiiseConnector');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'wiiseConnector');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'wiiseconnector');
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
 
