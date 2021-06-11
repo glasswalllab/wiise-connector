@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use glasswalllab\wiiseconnector\Http\Controllers\AuthController;
 
 Route::group(['middleware' => ['web']], function () {
-    Route::get('/signin', [AuthController::class, 'signin']);
-    Route::get('/callback', [AuthController::class, 'callback']);
-    Route::get('/signout/{provider}', [AuthController::class, 'signout']);
+    Route::get('/wiise/signin', [AuthController::class, 'signin']);
+    Route::get('/wiise/callback', [AuthController::class, 'callback']);
+    Route::get('/wiise/signout/{provider}', [AuthController::class, 'signout']);
 });
