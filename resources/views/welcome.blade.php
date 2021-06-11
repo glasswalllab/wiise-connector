@@ -33,6 +33,6 @@
           @endif
         </div>
       @endif
-    <a href="/signin" class="btn btn-primary btn-large">Click here to authorise Wiise</a>
+    <a href="/wiise/signin" class="btn btn-primary btn-large">Click here to authorise Wiise</a>
     </body>
 </html>
