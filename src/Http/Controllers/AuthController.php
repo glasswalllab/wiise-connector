@@ -1,6 +1,6 @@
 <?php
 
-namespace glasswalllab\wiiseConnector\Http\Controllers;
+namespace glasswalllab\wiiseconnector\Http\Controllers;
 
 use Illuminate\Http\Request;
 use glasswalllab\wiiseConnector\TokenStore\TokenCache;
