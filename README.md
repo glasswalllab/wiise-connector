@@ -44,6 +44,98 @@ WIISE_BASE_API_URL=https://wiise.api.bc.dynamics.com/v2.0/
 php artisan vendor:publish --provider="glasswalllab\wiiseconnector\WiiseConnectorServiceProvider" --tag="views"
 ```
 
+### Sample Usage
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use glasswalllab\wiiseconnector\wiiseconnector;
+
+class WiiseTest extends Controller
+{
+    //Get list of jobs
+    public function getJobs()
+    {
+        $wiise = new WiiseConnector();
+        $response = $wiise->CallWebServiceSync('/Job_List?\$select=No,Description,Bill_to_Customer_No,Status','GET','');
+        dd(json_decode($response)->value);
+    }
+
+    //Get list of job tasks for each job
+    public function getJobsTasks()
+    {
+        $wiise = new WiiseConnector();
+        $response = $wiise->CallWebServiceSync('/Job_Task_Lines?$select=Job_No,Job_Task_No,Description,Job_Task_Type&$filter=Job_Task_Type eq \'Posting\'','GET','');
+        dd(json_decode($response)->value);
+    }
+
+    //create a new resource
+    public function createResource($name,$rate)
+    {
+        //Ensure HOUR is a UOM iun Wiise
+        $data = json_encode(array(
+            'Name' => $name,
+            'Direct_Unit_Cost' => round(floatval($rate),2),
+            'Base_Unit_of_Measure' =>'HOUR'
+        ));
+
+        $wiise = new WiiseConnector();
+
+        //Add Page 76 Resource Card as a Web Service - Called Resource
+        $response = $wiise->CallWebServiceSync('/Resource','POST',$data);
+        dd(json_decode($response)->No);
+    }
+
+    //Update Resource
+    //$this->updateResource('R0100','Stephen Reid Test3','27.53','false');
+    public function updateResource($resourceNo,$name,$rate,$blocked)
+    {
+        if($blocked != 'true')
+        {
+            $blocked = 'false';
+        }
+        //Ensure HOUR is a UOM iun Wiise
+        $data = json_encode(array(
+            'Name' => $name,
+            'Direct_Unit_Cost' => round(floatval($rate),2),
+            'Base_Unit_of_Measure' =>'HOUR',
+            'Blocked' => $blocked
+        ));
+
+        $wiise = new WiiseConnector();
+
+        //Add Page 76 Resource Card as a Web Service - Called Resource
+        $call = $wiise->CallWebServiceQueue('/Resource(No=\''.$resourceNo.'\')','PATCH',$data);
+        return "Resource $resourceNo Updated";
+    }
+
+    //Create job journal line
+    public function createJobJournal()
+    {
+        $data = json_encode(array(
+            'Journal_Template_Name' => 'JOB', //Ensure this is setup in Wiise
+            'Journal_Batch_Name' => 'DEFAULT', //Ensure this is setup in Wiise
+            'Gen_Bus_Posting_Group' => 'DOMESTIC', //Ensure this is setup in Wiise
+            'Document_No' => 'LJOB', //Ensure this is setup in Wiise
+            'Posting_Date' => '2018-03-13',
+            'Job_No' => 'JOB00010',
+            'Job_Task_No' => '1010',
+            'No' => 'R0020',
+            'Quantity' => floatval(8.3)
+        ));
+
+        $wiise = new WiiseConnector();
+
+        //Add Page 201 Job Journals as a Web Service - Called Job_Journals
+        $call = $wiise->CallWebServiceQueue('/Job_Journals','POST',$data);
+        return "Job Journal Exported";
+    }
+}
+```
+
 ### Testing
 
 ```bash
