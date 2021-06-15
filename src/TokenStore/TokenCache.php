@@ -34,7 +34,7 @@ class TokenCache {
     if (empty($token)) {
       return '';
     }
-  dd($provider);
+    
     // Check if token is expired
     //Get current time + 5 minutes (to allow for time differences)
     $now = time() + 300;
