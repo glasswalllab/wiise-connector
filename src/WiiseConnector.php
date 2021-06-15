@@ -13,6 +13,7 @@ class WiiseConnector
         //Could move the below to job - but was having issues with the return
         $tokenCache = new TokenCache();
         $accessToken = $tokenCache->getAccessToken(config('WiiseConnector.provider'));
+        dd($accessToken);
 
         $url = config('wiiseConnector.baseUrl').config('wiiseConnector.tenantId')."/Production/ODataV4/Company('".config('wiiseConnector.companyName')."')".$endpoint;
 
