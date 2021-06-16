@@ -51,7 +51,7 @@ class CallWebService implements ShouldQueue
         try
         {
             $request = $this->oauthClient->getAuthenticatedRequest(
-                $method,
+                $this->method,
                 $url,
                 $accessToken,
                 $options,
