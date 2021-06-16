@@ -38,7 +38,7 @@ class CallWebService implements ShouldQueue
 
         $options['body'] = $this->body; //json encoded value
         
-        $oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
+        $this->$oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
             'clientId'                => config('wiiseConnector.appId'),
             'clientSecret'            => config('wiiseConnector.appSecret'),
             'redirectUri'             => config('wiiseConnector.redirectUri'),
