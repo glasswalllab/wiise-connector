@@ -34,7 +34,7 @@ class TokenCache {
     if (empty($token)) {
       return '';
     }
-    
+
     // Check if token is expired
     //Get current time + 5 minutes (to allow for time differences)
     $now = time() + 300;
@@ -44,18 +44,18 @@ class TokenCache {
   
         // Initialize the OAuth client
         // Initialize the OAuth client
-        $oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
-          'clientId'                => config('wiiseconnector.appId'),
-          'clientSecret'            => config('wiiseconnector.appSecret'),
-          'redirectUri'             => config('wiiseconnector.redirectUri'),
-          'urlAuthorize'            => config('wiiseconnector.authority').config('wiiseconnector.tenantId').config('wiiseconnector.authoriseEndpoint'),
-          'urlAccessToken'          => config('wiiseconnector.authority').config('wiiseconnector.tenantId').config('wiiseconnector.tokenEndpoint'),
-          'urlResourceOwnerDetails' => config('wiiseconnector.resource'),
-          'scopes'                  => config('wiiseconnector.scopes'),
+        $this->oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
+            'clientId'                => config('wiiseConnector.appId'),
+            'clientSecret'            => config('wiiseConnector.appSecret'),
+            'redirectUri'             => config('wiiseConnector.redirectUri'),
+            'urlAuthorize'            => config('wiiseConnector.authority').config('wiiseConnector.tenantId').config('wiiseConnector.authoriseEndpoint'),
+            'urlAccessToken'          => config('wiiseConnector.authority').config('wiiseConnector.tenantId').config('wiiseConnector.tokenEndpoint'),
+            'urlResourceOwnerDetails' => config('wiiseConnector.resource'),
+            'scopes'                  => config('wiiseConnector.scopes'),
         ]);
   
         try {
-        $newToken = $oauthClient->getAccessToken('refresh_token', [
+        $newToken = $this->oauthClient->getAccessToken('refresh_token', [
             'refresh_token' => $token->refreshToken
         ]);
 
