@@ -14,7 +14,7 @@ class WiiseConnector
         $tokenCache = new TokenCache();
         $accessToken = $tokenCache->getAccessToken(config('wiiseConnector.provider'));
 
-        $url = config('wiiseConnector.baseUrl').config('wiiseConnector.tenantId')."/Production/ODataV4/Company('".config('wiiseConnector.companyName')."')".$endpoint;
+        $url = config('wiiseConnector.baseUrl').config('wiiseConnector.tenantId')."/Production/ODataV4/Company('".config('wiiseConnector.companyName')."')".stripslashes($endpoint);
         dd($url);
 
         $options['headers']['Content-Type'] = 'application/json';
