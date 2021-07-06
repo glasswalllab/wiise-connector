@@ -13,7 +13,8 @@ return [
     'authoriseEndpoint' => env('WIISE_AUTHORISE_ENDPOINT', '/oauth2/authorize'),
     'tokenEndpoint'     => env('WIISE_TOKEN_ENDPOINT', '/oauth2/token'),
     'resource'          => env('WIISE_RESOURCE', 'https://api.businesscentral.dynamics.com'),
-    'scopes'            =>env('WIISE_SCOPES',''),
-    'baseUrl'           =>env('WIISE_BASE_API_URL',''),
-    'companyName'       =>env('WIISE_COMPANY_NAME',''),
+    'scopes'            => env('WIISE_SCOPES',''),
+    'baseUrl'           => env('WIISE_BASE_API_URL',''),
+    'companyName'       => env('WIISE_COMPANY_NAME',''),
+    'connectionType'    => env('WIISE_CONNECTION_TYPE',''),
 ];
